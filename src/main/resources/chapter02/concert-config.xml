@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="performance" class="com.chapter02.concert.DefaultPerformance"></bean>
+    <bean id="encoreableDelegate" class="com.chapter02.concert.DefaultEncoreable"></bean>
+    <bean id="criticismEngine" class="com.chapter02.concert.CriticismEngineImpl">
+        <property name="criticismPool">
+            <list>
+                <value>AAA</value>
+            </list>
+        </property>
+    </bean>
+    <bean class="com.chapter02.concert.CriticAspect" factory-method="aspectOf">
+        <property name="criticismEngine" ref="criticismEngine"/>
+    </bean>
+    <aop:aspectj-autoproxy proxy-target-class="false"></aop:aspectj-autoproxy>
+    <aop:config>
+        <aop:aspect>
+            <aop:declare-parents types-matching="com.chapter02.concert.Performance+"
+                                 implement-interface="com.chapter02.concert.Encoreable"
+                                 delegate-ref="encoreableDelegate"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

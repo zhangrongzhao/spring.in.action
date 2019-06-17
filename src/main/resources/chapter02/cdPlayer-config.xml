@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="sgtPeppers" class="com.zrz.chapter02.soundsystem.SgtPeppers"></bean>
+    <bean id="cdPlayer" class="com.zrz.chapter02.soundsystem.CDPlayer">
+         <property name="compactDisc" ref="sgtPeppers"></property>
+    </bean>
+
+    <bean id="discography" class="com.zrz.chapter02.soundsystem.Discography">
+        <constructor-arg value="B"></constructor-arg>
+        <constructor-arg>
+            <list>
+                <ref bean="sgtPeppers"></ref>
+                <ref bean="sgtPeppers"></ref>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean id="reallyBlankDisc" class="com.zrz.chapter02.soundsystem.BlankDisc">
+        <property name="title" value="A"></property>
+        <property name="artist" value="B"></property>
+        <property name="tracks">
+            <list>
+                <value>A</value>
+                <value>B</value>
+            </list>
+        </property>
+    </bean>
+</beans>

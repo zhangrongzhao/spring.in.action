@@ -1,0 +1,29 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+       <!--xmlns:aop="http://www.springframework.org/schema/aop"-->
+       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+                           <!--http://www.springframework.org/schema/beans/spring-beans.xsd-->
+                           <!--http://www.springframework.org/schema/aop-->
+                           <!--http://www.springframework.org/schema/aop/spring-aop.xsd">-->
+    <!--<bean id="audience" class="com.concert.Audience"></bean>-->
+    <!--<bean id="performance" class="com.concert.DefaultPerformance"></bean>-->
+    <!--<bean id="encoreableIntroducer" class="com.concert.EncoreableIntroducer"></bean>-->
+    <!--<aop:aspectj-autoproxy proxy-target-class="false"></aop:aspectj-autoproxy>-->
+    <!--<aop:config>-->
+        <!--<aop:aspect>-->
+            <!--<aop:declare-parents types-matching="com.concert.Performance+"-->
+                                 <!--implement-interface="com.concert.Encoreable"-->
+                                 <!--default-impl="com.concert.DefaultEncoreable"/>-->
+        <!--</aop:aspect>-->
+
+        <!--<aop:aspect ref="audience">-->
+            <!--<aop:pointcut id="performance" expression="execution(* com.concert.Performance.perform(..))"></aop:pointcut>-->
+            <!--<aop:before pointcut-ref="performance" method="silenceCellPhones"></aop:before>-->
+            <!--<aop:before pointcut-ref="performance" method="takeSeats"></aop:before>-->
+            <!--<aop:after-returning pointcut-ref="performance" method="applause"></aop:after-returning>-->
+            <!--<aop:after-throwing pointcut-ref="performance" method="demandRefund"></aop:after-throwing>-->
+            <!--<aop:around pointcut-ref="performance" method="watchPerformance"></aop:around>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+<!--</beans>-->
